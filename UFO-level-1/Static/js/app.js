@@ -5,6 +5,7 @@ var tableData = data;
 //reference to tbody ???
 var tbody = d3.select("tbody");
 
+tbody.html("");
 //console logging data ???
 console.log(tableData);
 
@@ -53,24 +54,24 @@ console.log(tableData);
 // });
 
         
-    
-    
-
-tableData.forEach((alienSighting) => {
+//var myFunction(addingRows) { (tried making this into a function but it would just leave the table empty
+//on the website)
+  tableData.forEach((alienSighting) => {
     var row = tbody.append("tr");
     Object.entries(alienSighting).forEach(([key, value]) => {
       var cell = row.append("td");
       cell.text(value);
     });
   });
-
-
+  //});
+    
 var button = d3.select("#filter-btn");
 
 
 button.on("click", function() {
 
     var tbody = d3.select("tbody");
+    tbody.html("");
 
     // Select the input element and get the raw HTML node
     var inputElement = d3.select("#datetime");
@@ -82,11 +83,15 @@ button.on("click", function() {
 
     console.log(filteredData);
 
+    //myFunction(addingRows); (non-working function...just empties table completely)
+
     filteredData.forEach((alienSighting) => {
-        var row = tbody.append("tr");
-        Object.entries(alienSighting).forEach(([key, value]) => {
-            var cell = row.append("td");
-            cell.text(value);
-        });
-        });
+         var row = tbody.append("tr");
+         Object.entries(alienSighting).forEach(([key, value]) => {
+             var cell = row.append("td");
+             cell.text(value);
+         });
+         });
 });
+
+// function here (my function doesn't work right)
